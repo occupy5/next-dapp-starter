@@ -1,0 +1,12 @@
+{
+  "short_name": "next-dapp-starter",
+  "name": "Next.js DApp Template",
+  "lang": "en",
+  "start_url": "/",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "dir": "ltr",
+  "display": "standalone",
+  "orientation": "portrait",
+  "prefer_related_applications": false
+}
