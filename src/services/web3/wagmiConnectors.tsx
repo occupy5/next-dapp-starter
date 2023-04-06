@@ -15,14 +15,13 @@ import { publicProvider } from 'wagmi/providers/public';
 import scaffoldConfig from '~/scaffold.config';
 import { getTargetNetwork } from '~/utils/scaffold-eth/network';
 
-
 const configuredNetwork = getTargetNetwork();
 
 // We always want to have mainnet enabled (ENS resolution, ETH price, etc). But only once.
-const enabledChains =
-  (configuredNetwork.id as number) === 1
-    ? [configuredNetwork]
-    : [configuredNetwork, chains.mainnet];
+// const enabledChains =
+//   (configuredNetwork.id as number) === 1
+//     ? [configuredNetwork]
+//     : [configuredNetwork, chains.mainnet];
 
 /**
  * Chains for the app

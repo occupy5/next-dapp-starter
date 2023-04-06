@@ -3,7 +3,7 @@ import { useBalance } from 'wagmi';
 
 import { getTargetNetwork } from '~/utils/scaffold-eth/network';
 
-export function useAccountBalance(address?: string) {
+export function useAccountBalance(address?: `0x${string}`) {
   const [balance, setBalance] = useState<number | null>(null);
   const [symbol, setSymbol] = useState<string | null>(null);
 

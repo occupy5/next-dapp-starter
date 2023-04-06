@@ -2,18 +2,15 @@
 import { Box, Flex, HStack, Button, Text } from '@chakra-ui/react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount } from 'wagmi';
-import { useAccountBalance } from '~/hooks/scaffold-eth/useAccountBalance';
 
+import { useAccountBalance } from '~/hooks/scaffold-eth/useAccountBalance';
 import { useNetworkColor } from '~/hooks/scaffold-eth/useNetworkColor';
 import { getTargetNetwork } from '~/utils/scaffold-eth/network';
-
 
 /**
  * Custom Wagmi Connect Button (watch balance + custom design)
  */
 export const RainbowKitCustomConnectButton = () => {
-//   useAutoConnect();
-
   const networkColor = useNetworkColor();
   const configuredNetwork = getTargetNetwork();
   const { address } = useAccount();
@@ -63,7 +60,9 @@ export const RainbowKitCustomConnectButton = () => {
                   <Box>
                     <Flex direction="column">
                       <Flex justifyContent="space-between">
-                        <Text fontSize="sm" as="b">{balance?.toFixed(4)}</Text>
+                        <Text fontSize="sm" as="b">
+                          {balance?.toFixed(4)}
+                        </Text>
                         <Text fontSize="sm">{symbol}</Text>
                       </Flex>
                       <Text fontSize="sm" color={networkColor}>
