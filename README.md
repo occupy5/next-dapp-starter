@@ -1,4 +1,4 @@
-# Dapp-Nextjs-Chakra Starter
+# Nextjs-DAPP-Starter
 
 ## Features
 
