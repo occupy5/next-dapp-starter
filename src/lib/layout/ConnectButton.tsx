@@ -39,19 +39,14 @@ export const RainbowKitCustomConnectButton = () => {
 
               if (chain.unsupported || chain.id !== configuredNetwork.id) {
                 return (
-                  <>
-                    <Text fontSize="sm" color={{ color: networkColor }}>
+                  <HStack>
+                    <Text fontSize="sm" color={networkColor}>
                       {configuredNetwork.name}
                     </Text>
-                    <button
-                      className="btn btn-sm btn-error ml-2"
-                      onClick={openChainModal}
-                      type="button"
-                    >
-                      <span>Wrong network</span>
-                      {/* <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" /> */}
-                    </button>
-                  </>
+                    <Button onClick={openChainModal}>
+                      <Text fontSize="md">Wrong Network</Text>
+                    </Button>
+                  </HStack>
                 );
               }
 
