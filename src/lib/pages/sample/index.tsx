@@ -27,10 +27,17 @@ const SampleUI = () => {
           <Spinner />
         </Center>
       )}
-      <Grid templateColumns="repeat(3, 1fr)" gap={4}>
+      <Grid
+        templateColumns={{
+          base: 'repeat(1, 1fr)',
+          sm: 'repeat(2, 1fr)',
+          md: 'repeat(3, 1fr)',
+        }}
+        gap={4}
+      >
         {comments.map((comment) => (
           <GridItem key={comment.id}>
-            <Card>
+            <Card minW="250">
               <CardHeader>{comment.display_address}</CardHeader>
               <CardBody>{comment.message}</CardBody>
             </Card>
