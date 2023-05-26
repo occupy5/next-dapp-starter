@@ -8,7 +8,10 @@ import {
   CardHeader,
   CardBody,
   Button,
+  Input,
+  useToast,
 } from '@chakra-ui/react';
+import { useState, useEffect } from 'react';
 
 import {
   useSampleContractRead,
@@ -18,7 +21,28 @@ import {
 const SampleUI = () => {
   const { comments, isLoading } = useSampleContractRead();
 
-  const { write, error } = useSampleContractWrite();
+  const [message, setMessage] = useState<string>();
+
+  const { write, error } = useSampleContractWrite(message);
+
+  const toast = useToast();
+  const id = 'test-toast';
+
+  useEffect(() => {
+    if (error && !toast.isActive(id)) {
+      const showError = (errorMessage: string) => {
+        toast({
+          id,
+          title: 'Account created.',
+          description: errorMessage,
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+      };
+      showError(error.message);
+    }
+  }, [error, toast]);
 
   return (
     <VStack>
@@ -44,10 +68,12 @@ const SampleUI = () => {
           </GridItem>
         ))}
       </Grid>
+      <Input
+        placeholder="message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
       <Button onClick={() => write?.()}>Submit</Button>
-      {error && (
-        <div>An error occurred preparing the transaction: {error.message}</div>
-      )}
     </VStack>
   );
 };

@@ -57,14 +57,14 @@ export const useSampleContractRead = () => {
   return { comments, isLoading };
 };
 
-export const useSampleContractWrite = () => {
+export const useSampleContractWrite = (message: string | undefined) => {
   const { config, error } = usePrepareContractWrite({
     address: '0x8Ac89A563dF158e01C012514cCC08e20ac5A6feA',
     abi: Comments.abi,
     functionName: 'addComment',
-    args: ['my-blog-post', 'test comment'],
+    args: ['my-blog-post', message],
   });
-  const { write } = useContractWrite(config);
+  const { write, isIdle, isSuccess } = useContractWrite(config);
 
-  return { write, error };
+  return { write, error, isIdle, isSuccess };
 };
